@@ -19,11 +19,18 @@ app.get("/todos", async (req, res) => {
 });
 
 app.post("/todos", async (req, res) => {
+  const user = await prisma.user.create({
+    data: {
+      firstName: "Tom",
+      lastName: "Newton",
+    }
+  });
   const todo = await prisma.todo.create({
     data: {
       completed: false,
       createdAt: new Date(),
       text: req.body.text ?? "Empty todo",
+      userId: user.id,
     },
   });
 
