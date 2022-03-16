@@ -58,6 +58,12 @@ app.delete("/todos/:id", async (req, res) => {
   return res.send({ status: "ok" });
 });
 
+app.get("/my-feature", async (req, res) => {
+  res.send(`
+  This is my new feature.
+  `);
+});
+
 app.get("/", async (req, res) => {
   res.send(
     `
@@ -66,6 +72,7 @@ app.get("/", async (req, res) => {
   <pre>
     GET, POST /todos
     GET, PUT, DELETE /todos/:id
+    GET /my-feature
   </pre>
   `.trim(),
   );
